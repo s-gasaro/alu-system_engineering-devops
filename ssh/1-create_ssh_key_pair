@@ -1,5 +1,9 @@
-
 #!/usr/bin/env bash
-# Created private key school
-# passphrase: betty
-ssh-keygen -f school -b 4096 -N betty
+# Create a 4096-bit RSA private key named 'school' with passphrase 'betty'
+
+# Remove existing key files to avoid prompt or confusion
+[ -f school ] && rm -f school
+[ -f school.pub ] && rm -f school.pub
+
+# Generate the RSA key pair
+yes | ssh-keygen -t rsa -b 4096 -f school -N "betty"
