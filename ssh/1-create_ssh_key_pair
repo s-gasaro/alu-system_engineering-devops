@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-# Create a 4096-bit RSA private key named 'school' with passphrase 'betty'
+# Write a Bash script that creates an RSA key pair.
 
-# Remove existing key files to avoid prompt or confusion
-[ -f school ] && rm -f school
-[ -f school.pub ] && rm -f school.pub
-
-# Generate the RSA key pair
-yes | ssh-keygen -t rsa -b 4096 -f school -N "betty"
+ssh-keygen -t rsa -b 4096 -f school -N betty -C "crackhead did it!"
