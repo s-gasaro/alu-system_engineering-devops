@@ -1,15 +1,29 @@
 #!/usr/bin/env bash
-# This script installs and configures Nginx on Ubuntu to return 'Holberton School' at the root path
+# Installing nginx on a server and configuring a simple server
 
-# Exit on any error
-set -e
+# Updating packages
+sudo apt-get update -y && sudo apt-get upgrade -y
 
-# Update package list and install nginx quietly
-apt-get update -y
-apt-get install -y nginx
+# Installing nginx
+sudo apt-get install nginx -y
 
-# Create custom index.html
-echo "Holberton School for the win!" > /var/www/html/index.html
+# Creating an index html file
+echo "Holberton School" | sudo tee /var/www/html/index.html
 
-# Restart nginx without using systemctl
-service nginx restart
+# Altering the server config to create a server
+echo "
+events {
+
+}
+
+http {
+	server {
+		listen 80;
+		index index.html;
+		root /var/www/html;
+	}
+}
+"  | sudo tee /etc/nginx/nginx.conf
+
+# Restarting the server with the new config
+sudo service nginx restart
