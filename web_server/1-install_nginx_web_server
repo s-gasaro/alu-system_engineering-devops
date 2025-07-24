@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
-# This script installs and configures Nginx on Ubuntu to return 'Holberton School' at the root path
-
-# Exit immediately if a command exits with a non-zero status
-set -e
-
-# Update and install nginx silently
-apt-get update -y
-apt-get install -y nginx
-
-# Create a custom index.html in the default nginx root directory
-echo "Holber
+# Script that installs Nginx server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
+sudo service nginx start
