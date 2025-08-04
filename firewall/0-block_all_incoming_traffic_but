@@ -1,0 +1,20 @@
+onfigure ufw to block all incoming traffic except SSH (22), HTTP (80), HTTPS (443)
+
+# Install ufw if not installed
+apt-get update
+apt-get install -y ufw
+
+# Reset ufw to default to start fresh
+ufw --force reset
+
+# Set default to deny incoming, allow outgoing
+ufw default deny incoming
+ufw default allow outgoing
+
+# Allow incoming TCP ports 22, 80, 443
+ufw allow 22/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
+
+# Enable ufw firewall
+ufw --force enable
