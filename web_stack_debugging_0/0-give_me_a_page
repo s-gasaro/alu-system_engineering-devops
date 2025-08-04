@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Starts Apache2 in the container to make the web server respond with "Hello Holberton"
+
+service apache2 start
